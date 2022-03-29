@@ -1,11 +1,11 @@
 FROM alpine AS builder
 
 
-ARG version=v1.20181219
+ARG commit=7715254169c62267313d163c48f5c9d290370c65
 RUN apk add --no-cache make git
 RUN git clone https://github.com/StackExchange/blackbox.git /usr/blackbox \
  && cd /usr/blackbox \
- && git checkout tags/$version \
+ && git checkout $commit \
  && make update
 
 FROM alpine
